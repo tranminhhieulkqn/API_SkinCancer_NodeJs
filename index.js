@@ -102,7 +102,7 @@ app.post('/predictions', upload.single('imageFile'), async (req, res, next) => {
 	try {
 		await cloudinary.v2.uploader.upload(file.path,
 			{
-				folder: `SkinCancer_DataSet/${prediction['prediction']}/`,
+				folder: `SkinCancer_DataSet/${prediction['predicted label']}/`,
 				use_filename: true,
 			}
 		);	
