@@ -28,9 +28,9 @@ class ModelPredictor {
     await image
       .resize(224, 224)
       .scan(0, 0, image.bitmap.width, image.bitmap.height, (x, y, idx) => {
-        pixeldata.push(image.bitmap.data[idx + 2] / 255);
-        pixeldata.push(image.bitmap.data[idx + 1] / 255);
         pixeldata.push(image.bitmap.data[idx + 0] / 255);
+        pixeldata.push(image.bitmap.data[idx + 1] / 255);
+        pixeldata.push(image.bitmap.data[idx + 2] / 255);
       });
     return tf.tensor4d(pixeldata, [1, image.bitmap.width, image.bitmap.height, 3]);
   };
