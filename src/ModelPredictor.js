@@ -55,6 +55,25 @@ class ModelPredictor {
       };
     });
   };
+  runPredictions = async imgPath => {
+    return this.toPixelData(imgPath).then(imageTensor => {
+      // Show data Tensor
+      // console.log(imageTensor.print())
+      const prediction = this.model.predict(imageTensor);
+      const scores = prediction.arraySync()[0];
+      const maxScore = prediction.max().arraySync();
+      const maxScoreIndex = scores.indexOf(maxScore);
+      const labelScores = {};
+      scores.forEach((s, i) => {
+        labelScores[this.labels[i]] = (parseFloat(s.toFixed(4)) * 100).toFixed(2);
+      });
+      return {
+        "success": true,
+        "predicted label": `${this.labels[maxScoreIndex]}`,
+        "scores": labelScores,
+      };
+    });
+  };
 }
 
 module.exports = ModelPredictor
