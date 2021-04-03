@@ -1,6 +1,6 @@
-const tf = require('@tensorflow/tfjs-node');
-const Jimp = require('jimp');
 const fs = require('fs');
+const Jimp = require('jimp');
+const tf = require('@tensorflow/tfjs-node');
 const { Console } = require('console');
 
 class ModelPredictor {

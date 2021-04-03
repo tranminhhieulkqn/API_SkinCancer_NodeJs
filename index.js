@@ -1,10 +1,10 @@
 var express = require('express');
-const path = require('path');
-const cors = require('cors');
 const fs = require('fs');
-const bodyParser = require('body-parser');
+const cors = require('cors');
+const path = require('path');
 const multer = require('multer');
 const cloudinary = require('cloudinary');
+const bodyParser = require('body-parser');
 const ModelPredictor = require('./src/ModelPredictor');
 
 cloudinary.config({
